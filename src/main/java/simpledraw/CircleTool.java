@@ -16,7 +16,7 @@ public class CircleTool
 	private Point myCenter;
 	private int myRadius;
 
-	public CircleTool(DrawingPanel panel) {
+	public CircleTool(DrawingController panel) {
 		super(panel);
 	}
 

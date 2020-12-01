@@ -3,7 +3,6 @@ package simpledraw;
 import java.awt.Cursor;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
@@ -18,7 +17,7 @@ public class SelectionTool
 	private Shape mySelectedShape = null;
 	private Point myLastPoint;
 
-	public SelectionTool(DrawingPanel panel) {
+	public SelectionTool(DrawingController panel) {
 		super(panel);
 	}
 
@@ -51,7 +50,7 @@ public class SelectionTool
 	}
 
 	public void mouseMoved(MouseEvent e) {
-		Shape pickedShape = myPanel.myDrawing.pickShapeAt(e.getPoint());
+		Shape pickedShape = myPanel.getDrawing().pickShapeAt(e.getPoint());
 		if (pickedShape != null) {
 			myPanel.setCursor(Cursor.getPredefinedCursor(Cursor.
 				HAND_CURSOR));

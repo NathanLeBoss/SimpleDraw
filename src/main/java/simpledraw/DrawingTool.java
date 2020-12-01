@@ -13,12 +13,11 @@ import java.awt.event.MouseMotionListener;
 
 public abstract class DrawingTool
 	implements KeyListener, MouseListener, MouseMotionListener {
-	DrawingPanel myPanel;
+	DrawingController myPanel;
         Drawing myDrawing;
 
-	DrawingTool(DrawingPanel panel) {
+	DrawingTool(DrawingController panel) {
 		myPanel = panel;
-                myDrawing = panel.myDrawing;
 	}
 
 	/**

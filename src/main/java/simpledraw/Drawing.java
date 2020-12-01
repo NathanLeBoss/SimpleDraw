@@ -18,6 +18,8 @@ public class Drawing {
 	 */
 	private List<Shape> myShapes = new LinkedList<Shape>();
 
+	private final List<DrawingView> myViews = new LinkedList<DrawingView>();
+
 	public Drawing() {
 	}
 
@@ -67,5 +69,10 @@ public class Drawing {
 	public void clearSelection() {
 		for (Shape s : myShapes)
 			s.setSelected(false);
+	}
+
+	public void addDrawingView(DrawingView view) {
+		myViews.add(view);
+		view.drawHasChanged(new DrawingEvent(this));
 	}
 }

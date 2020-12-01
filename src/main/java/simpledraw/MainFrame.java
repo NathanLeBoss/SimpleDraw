@@ -23,7 +23,10 @@ public class MainFrame
 	JToggleButton mySelectButton = new JToggleButton("Select");
 	JToggleButton myLineButton = new JToggleButton("Line");
 	JToggleButton myCircleButton = new JToggleButton("Circle");
-	DrawingPanel myDrawingPanel = new DrawingPanel();
+
+	Drawing myDrawing = new Drawing();
+
+	DrawingController myDrawingController = new DrawingController(myDrawing);
 
 	/**Construct the frame*/
 	public MainFrame() {
@@ -51,7 +54,7 @@ public class MainFrame
 		buttonPanel.add(mySelectButton, null);
 		buttonPanel.add(myLineButton, null);
 		buttonPanel.add(myCircleButton, null);
-		getContentPane().add(myDrawingPanel, BorderLayout.CENTER);
+		getContentPane().add(myDrawingController, BorderLayout.CENTER);
 
 		ButtonGroup buttonGroup = new ButtonGroup();
 		buttonGroup.add(mySelectButton);
@@ -64,7 +67,7 @@ public class MainFrame
 		mySelectButton.addActionListener(
 			new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				myDrawingPanel.activateSelectionTool();
+				myDrawingController.activateSelectionTool();
 			}
 		}
 		);
@@ -72,7 +75,7 @@ public class MainFrame
 		myLineButton.addActionListener(
 			new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				myDrawingPanel.activateLineTool();
+				myDrawingController.activateLineTool();
 			}
 		}
 		);
@@ -80,7 +83,7 @@ public class MainFrame
 		myCircleButton.addActionListener(
 			new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				myDrawingPanel.activateCircleTool();
+				myDrawingController.activateCircleTool();
 			}
 		}
 		);

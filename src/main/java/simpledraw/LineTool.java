@@ -19,7 +19,7 @@ public class LineTool
 	private Point myInitialPoint;
 	private Point myFinalPoint;
 
-	public LineTool(DrawingPanel panel) {
+	public LineTool(DrawingController panel) {
 		super(panel);
 	}
 

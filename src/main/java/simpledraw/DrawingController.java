@@ -40,18 +40,6 @@ public class DrawingController extends JComponent implements DrawingView, KeyLis
 				RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setRenderingHints(qualityHints);
-		myDrawing.accept(
-				new ShapeVisitor() {
-					@Override
-					public void visit(Line line) {
-						draw(line, g2);
-					}
-					@Override
-					public void visit(Circle circle) {
-						draw(circle, g2);
-					}
-				});
-		myDrawingTool.draw( (Graphics2D) g);
 	}
 
 	public boolean isSelected(Shape s) {
@@ -103,16 +91,6 @@ public class DrawingController extends JComponent implements DrawingView, KeyLis
 		myDrawingTool = new LineTool(this);
 		clearSelection();
 		repaint();
-	}
-
-	void activateXMLProcessorSave() {
-		XMLProcessor myXMLProcessor = new XMLProcessor(myDrawing);
-		myXMLProcessor.saveXML();
-	}
-
-	void activateXMLProcessorLoad() {
-		XMLProcessor myXMLProcessor = new XMLProcessor(myDrawing);
-		myXMLProcessor.loadXML();
 	}
 
 	public void draw(Circle circle, Graphics2D graphics) {
@@ -193,5 +171,7 @@ public class DrawingController extends JComponent implements DrawingView, KeyLis
 	public void mouseMoved(MouseEvent e) {
 		myDrawingTool.mouseMoved(e);
 	}
+
+
 
 }

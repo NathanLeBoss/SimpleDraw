@@ -34,7 +34,7 @@ public class CircleTool
 		} else {
 			// Radius
 			iAmActive = false;
-			myDrawing.addShape(
+			myPanel.addShape(
 				new Circle(myCenter, myRadius)
 				);
 			myPanel.setCursor(Cursor.getDefaultCursor());

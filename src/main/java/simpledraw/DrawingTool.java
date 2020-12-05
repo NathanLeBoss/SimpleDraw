@@ -14,7 +14,6 @@ import java.awt.event.MouseMotionListener;
 public abstract class DrawingTool
 	implements KeyListener, MouseListener, MouseMotionListener {
 	DrawingController myPanel;
-        Drawing myDrawing;
 
 	DrawingTool(DrawingController panel) {
 		myPanel = panel;
@@ -29,6 +28,7 @@ public abstract class DrawingTool
 	public void keyTyped(KeyEvent e) {
 	}
 
+	@Override
 	public void keyPressed(KeyEvent e) {
 	}
 

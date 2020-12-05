@@ -36,7 +36,7 @@ public class LineTool
 		} else {
 			// Second point
 			iAmActive = false;
-			myDrawing.addShape(
+			myPanel.addShape(
 				new Line(myInitialPoint, myFinalPoint)
 				);
 			myPanel.setCursor(Cursor.getDefaultCursor());

@@ -43,6 +43,14 @@ public class Line
 		return Line.segmentIsPickedBy(myStart, myEnd, p);
 	}
 
+	public Point getStart() {
+		return myStart;
+	}
+
+	public Point getEnd() {
+		return myEnd;
+	}
+
 	/**
 	 * A Utility function that determines whether a point is in a segment.
 	 * @param A     The starting point of the segment

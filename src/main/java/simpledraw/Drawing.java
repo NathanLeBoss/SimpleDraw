@@ -75,4 +75,15 @@ public class Drawing {
 		myViews.add(view);
 		view.drawHasChanged(new DrawingEvent(this));
 	}
+
+	private void notifyViews(DrawingEvent e) {
+		for(DrawingView view : myViews) {
+			view.drawHasChanged(e);
+		}
+	}
+
+	public void translateShapeBy(Shape shape, int dx, int dy) {
+		shape.translateBy(dx, dy);
+		notifyViews(new DrawingEvent(this));
+	}
 }

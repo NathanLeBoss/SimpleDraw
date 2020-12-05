@@ -21,28 +21,16 @@ public class SelectionTool
 		super(panel);
 	}
 
-	public void keyPressed(KeyEvent e) {
-		if (e.getKeyChar() == KeyEvent.VK_DELETE) {
-			if (mySelectedShape != null) {
-				myDrawing.deleteShape(mySelectedShape);
-				myPanel.repaint();
-			}
-		}
-	}
-
 	public void mousePressed(MouseEvent e) {
-		Shape pickedShape = myDrawing.pickShapeAt(e.getPoint());
+		Shape pickedShape = myPanel.getDrawing().pickShapeAt(e.getPoint());
 		myLastPoint = e.getPoint();
-		if (mySelectedShape != null) {
-			mySelectedShape.setSelected(false);
+		if(pickedShape != null) {
+			myPanel.selectShape(pickedShape);
+			myPanel.setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
 		}
-		mySelectedShape = pickedShape;
-		if (mySelectedShape != null) {
-			mySelectedShape.setSelected(true);
-			myPanel.setCursor(Cursor.getPredefinedCursor(Cursor.
-				MOVE_CURSOR));
+		else {
+			myPanel.clearSelection();
 		}
-		myPanel.repaint();
 	}
 
 	public void mouseReleased(MouseEvent e) {

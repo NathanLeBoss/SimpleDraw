@@ -76,6 +76,12 @@ public class Drawing {
 		view.drawHasChanged(new DrawingEvent(this));
 	}
 
+	public void accept(ShapeVisitor visitor) {
+		for(Shape s : myShapes) {
+			s.accept(visitor);
+		}
+	}
+
 	private void notifyViews(DrawingEvent e) {
 		for(DrawingView view : myViews) {
 			view.drawHasChanged(e);

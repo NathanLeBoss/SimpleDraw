@@ -69,6 +69,10 @@ public class PolyLine
 		return result;
 	}
 
+	@Override
+	public void accept(ShapeVisitor visitor) {
+
+	}
 
 
 }

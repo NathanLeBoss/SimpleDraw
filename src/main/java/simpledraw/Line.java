@@ -43,6 +43,11 @@ public class Line
 		return Line.segmentIsPickedBy(myStart, myEnd, p);
 	}
 
+	@Override
+	public void accept(ShapeVisitor visitor) {
+		visitor.visit(this);
+	}
+
 	public Point getStart() {
 		return myStart;
 	}

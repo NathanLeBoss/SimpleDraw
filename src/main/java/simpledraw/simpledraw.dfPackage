@@ -47,7 +47,7 @@ class reference6 {
 */
 class reference7 {
 }/**
-@__ref <oiref:java#Class#simpledraw.DrawingController:oiref><oihard>
+@__ref <oiref:java#Class#simpledraw.DrawingPanel:oiref><oihard>
 @__modelType reference 
 */
 class reference8 {
@@ -71,12 +71,12 @@ class __tags {
 */
 class __options {
 }/**
-@__positions <oigroup:MemberLink#<oiref:java#Member#simpledraw.DrawingController#myCurrentTool:oiref>=715,444,550,384:oigroup>
+@__positions <oigroup:MemberLink#<oiref:java#Member#simpledraw.DrawingPanel#myCurrentTool:oiref>=715,444,550,384:oigroup>
 <oigroup:<oiref:java#Extends#simpledraw.SelectionTool#simpledraw.DrawingTool:oiref>=334,444,482,384:oigroup>
 <oigroup:<oiref:java#Class#simpledraw.MainFrame:oiref>=687,10,203,184,1:oigroup>
 <oigroup:<oiref:java#Class#simpledraw.LineTool:oiref>=10,444,203,185,1:oigroup>
-<oigroup:MemberLink#<oiref:java#Member#simpledraw.DrawingController#myDrawing:oiref>=898,527,978,527:oigroup>
-<oigroup:<oiref:java#Class#simpledraw.DrawingController:oiref>=679,444,219,203,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#simpledraw.DrawingPanel#myDrawing:oiref>=898,527,978,527:oigroup>
+<oigroup:<oiref:java#Class#simpledraw.DrawingPanel:oiref>=679,444,219,203,1:oigroup>
 <oigroup:MemberLink#<oiref:java#Member#simpledraw.Drawing#myShapes:oiref>=1067,610,385,718:oigroup>
 <oigroup:<oiref:java#Extends#simpledraw.Circle#simpledraw.Shape:oiref>=276,925,276,865:oigroup>
 <oigroup:<oiref:java#Class#simpledraw.DrawingTool:oiref>=415,10,203,374,1:oigroup>

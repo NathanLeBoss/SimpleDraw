@@ -1,95 +1,85 @@
 package simpledraw;
 
-/**
- * Drawing, a collection of Shapes
- * @author Rémi Bastide
- * @version 1.0
- * @see simpledraw.Shape
- */
+import java.util.List;
+import java.util.LinkedList;
 
-import java.util.*;
-
-import java.awt.Graphics2D;
 import java.awt.Point;
 
+/**
+ * @author Nathan FERRER
+ * @author Mathilde MALHERBE
+ */
 public class Drawing {
-	/**
-	 * A drawing is a collection of shapes
-	 */
-	private List<Shape> myShapes = new LinkedList<Shape>();
+    /**
+     * A drawing is a collection of shapes
+     */
+    private List<Shape> myShapes = new LinkedList<Shape>();
+    private final List<DrawingViewI> myViews = new LinkedList<DrawingViewI>();
 
-	private final List<DrawingView> myViews = new LinkedList<DrawingView>();
+    public Drawing() {
+    }
 
-	public Drawing() {
-	}
+    public void accept(ShapeVisitorI visitor) {
+        for (Shape s : myShapes) {
+            s.accept(visitor);
+        }
+    }
 
-	/**
-	 * Displays the drawing
-	 * @param g     The Graphics to display on
-	 **/
-	public void draw(Graphics2D g) {
-		for(Shape s : myShapes)
-			s.draw(g);
-	}
+    public void addDrawingView(DrawingViewI view) {
+        myViews.add(view);
+        view.drawHasChanged(new DrawingEvent(this));
+    }
 
-	/**
-	 * Add a shape to the Drawing
-	 * @param s     The Shape to add
-	 **/
-	public void addShape(Shape s) {
-		myShapes.add(s);
-	}
+    /**
+     * Add a shape to the Drawing
+     *
+     * @param s The Shape to add
+     **/
+    public void addShape(Shape s) {
+        myShapes.add(s);
+        notifyViews(new DrawingEvent(this));
+    }
 
-	/**
-	 * Delete a shape from the Drawing
-	 * @param s     The Shape to delete
-	 **/
-	public void deleteShape(Shape s) {
-		myShapes.remove(s);
-	}
+    /**
+     * Delete a shape from the Drawing
+     *
+     * @param s The Shape to delete
+     **/
+    public void deleteShape(Shape s) {
+        myShapes.remove(s);
+        notifyViews(new DrawingEvent(this));
+    }
 
-	/**
-	 * Determines whether the given Point lies whithin a Shape
-	 * @param p     The Point to test
-	 * @return      A Shape selected by this Point or null if no Shape is there
-	 **/
-	public Shape pickShapeAt(Point p) {
-		Shape result = null;
-		for (Shape s : myShapes)
-			if (s.isPickedBy(p)) {
-				result = s;
-				break;
-			}
-		return result;
-	}
+    public void deleteAllShapes() {
+        myShapes.clear();
+        notifyViews(new DrawingEvent(this));
+    }
 
-	/**
-	 * Ensures that no Shape is currently selected
-	 */
-	public void clearSelection() {
-		for (Shape s : myShapes)
-			s.setSelected(false);
-	}
+    public void translateShapeBy(Shape shape, int dx, int dy) {
+        shape.translateBy(dx, dy);
+        notifyViews(new DrawingEvent(this));
+    }
 
-	public void addDrawingView(DrawingView view) {
-		myViews.add(view);
-		view.drawHasChanged(new DrawingEvent(this));
-	}
+    /**
+     * Determines whether the given Point lies whithin a Shape
+     *
+     * @param p The Point to test
+     * @return A Shape selected by this Point or null if no Shape is there
+     **/
+    public Shape pickShapeAt(Point p) {
+        Shape result = null;
+        for (Shape s : myShapes)
+            if (s.isPickedBy(p)) {
+                result = s;
+                break;
+            }
+        return result;
+    }
 
-	public void accept(ShapeVisitor visitor) {
-		for(Shape s : myShapes) {
-			s.accept(visitor);
-		}
-	}
+    private void notifyViews(DrawingEvent e) {
+        for (DrawingViewI view : myViews) {
+            view.drawHasChanged(e);
+        }
+    }
 
-	private void notifyViews(DrawingEvent e) {
-		for(DrawingView view : myViews) {
-			view.drawHasChanged(e);
-		}
-	}
-
-	public void translateShapeBy(Shape shape, int dx, int dy) {
-		shape.translateBy(dx, dy);
-		notifyViews(new DrawingEvent(this));
-	}
 }

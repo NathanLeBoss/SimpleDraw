@@ -11,49 +11,58 @@ import java.awt.event.MouseMotionListener;
  * A Drawing tool in the drawing panel
  */
 
-public abstract class DrawingTool
-	implements KeyListener, MouseListener, MouseMotionListener {
-	DrawingController myPanel;
+public abstract class DrawingTool implements KeyListener, MouseListener, MouseMotionListener {
+    DrawingController myPanel;
 
-	DrawingTool(DrawingController panel) {
-		myPanel = panel;
-	}
+    DrawingTool(DrawingController panel) {
+        myPanel = panel;
+    }
 
-	/**
-	 * Draws this tool in the panel
-	 * @param g the graphics context to draw into
-	 */
-	abstract void draw(Graphics2D g);
+    /**
+     * Draws this tool in the panel
+     *
+     * @param g the graphics context to draw into
+     */
+    abstract void draw(Graphics2D g);
 
-	public void keyTyped(KeyEvent e) {
-	}
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-	}
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
 
-	public void keyReleased(KeyEvent e) {
-	}
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
 
-	public void mouseClicked(MouseEvent e) {
-	}
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
 
-	public void mousePressed(MouseEvent e) {
-	}
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
 
-	public void mouseReleased(MouseEvent e) {
-	}
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
 
-	public void mouseEntered(MouseEvent e) {
-		myPanel.requestFocus();
-	}
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        myPanel.requestFocus();
+    }
 
-	public void mouseExited(MouseEvent e) {
-	}
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
 
-	public void mouseDragged(MouseEvent e) {
-	}
+    @Override
+    public void mouseDragged(MouseEvent e) {
+    }
 
-	public void mouseMoved(MouseEvent e) {
-	}
+    @Override
+    public void mouseMoved(MouseEvent e) {
+    }
 }

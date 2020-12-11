@@ -1,60 +1,49 @@
 package simpledraw;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.Point;
 
 /**
  * A circle
+ *
+ * @author Nathan FERRER
  **/
 
-public class Circle
-	extends Shape {
-	private Point myCenter;
-	private int myRadius;
+public class Circle extends Shape {
+    private Point myCenter;
+    private int myRadius;
 
-	/**
-	 * Construct a Circle
-	 * @param center        The center of the circle
-	 * @param radius        The radius of the circle
-	 **/
-	public Circle(Point center, int radius) {
-		myCenter = center;
-		myRadius = radius;
-	}
+    /**
+     * Construct a Circle
+     *
+     * @param center The center of the circle
+     * @param radius The radius of the circle
+     **/
+    public Circle(Point center, int radius) {
+        myCenter = center;
+        myRadius = radius;
+    }
 
-	@Override
-	public void draw(Graphics2D g) {
-		g.setColor(
-			isSelected() ?
-			Color.red :
-			Color.black
-			);
-		g.drawOval(myCenter.x - myRadius,
-			   myCenter.y - myRadius,
-			   myRadius * 2,
-			   myRadius * 2
-			);
-	}
+    public Point getCenter() {
+        return myCenter;
+    }
 
-	public void translateBy(int dx, int dy) {
-		myCenter.translate(dx, dy);
-	}
+    public int getRadius() {
+        return myRadius;
+    }
 
-	public boolean isPickedBy(Point p) {
-		return (Math.abs(myCenter.distance(p) - myRadius) <= 2);
-	}
+    @Override
+    public void translateBy(int dx, int dy) {
+        myCenter.translate(dx, dy);
+    }
 
-	@Override
-	public void accept(ShapeVisitor visitor) {
-		visitor.visit(this);
-	}
+    @Override
+    public boolean isPickedBy(Point p) {
+        return (Math.abs(myCenter.distance(p) - myRadius) <= 2);
+    }
 
-	public Point getCenter() {
-		return myCenter;
-	}
+    @Override
+    public void accept(ShapeVisitorI visitor) {
+        visitor.visit(this);
+    }
 
-	public int getRadius() {
-		return myRadius;
-	}
 }
